@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Issue Log{% endblock %}</title>
+    <style>
+        .issue-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+.issue-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.issue-status {
+    font-weight: bold;
+}
+.issue-status.pending {
+    color: red;
+}
+.issue-status.resolved {
+    color: green;
+}
+.edit-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.edit-link:hover {
+    background-color: #217dbb;
+}
+
+        body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+        .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 4px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-home {
+        background-color: #3498db; /* blue */
+        color: white;
+    }
+    .btn-home:hover {
+        background-color: #217dbb;
+    }
+
+    .btn-logout {
+        background-color: #e74c3c; /* red */
+        color: white;
+    }
+    .btn-logout:hover {
+        background-color: #c0392b;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="
+  margin: 0;
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2ecc71; /* pleasant green */
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: 0.4px;
+  box-sizing: border-box;
+  padding: 20px;
+">Issue Log App</h1>
+        <nav>
+            <a href="/" class="btn btn-home">Home</a>
+            {% if current_user.is_authenticated %}
+            <p style="display: inline;">Logged in as: {{ current_user.email }}</p>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout" style="display: inline;">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+        </nav>
+        <!-- show login/logout and current user -->
+        
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="color: blue;">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Issue Log: IPD Project</p>
+    </footer>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

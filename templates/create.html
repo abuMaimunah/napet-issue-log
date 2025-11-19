@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Create Issue{% endblock %}
+
+{% block content %}
+
+<style>
+    .issue-container {
+        max-width: 500px;
+        margin: 60px auto;
+        padding: 25px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .issue-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .issue-container label {
+        font-size: 14px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .issue-container input,
+    .issue-container textarea,
+    .issue-container select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .issue-container button {
+        width: 100%;
+        padding: 12px;
+        background: #2ecc71;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .issue-container button:hover {
+        background: #27ae60;
+    }
+</style>
+
+<div class="issue-container">
+    <h2>Create Issue</h2>
+
+    <form method="POST">
+
+        <label for="title">Issue:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Critical">Critical</option>
+        </select>
+
+        <label for="resolution">Resolution:</label>
+        <textarea id="resolution" name="resolution" rows="4"></textarea>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="Pending" selected>Pending</option>
+            <option value="Resolved">Resolved</option>
+        </select>
+
+        <button type="submit">Submit Issue</button>
+    </form>
+</div>
+
+{% endblock %}

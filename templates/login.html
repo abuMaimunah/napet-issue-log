@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+    .login-container {
+        max-width: 350px;
+        margin: 60px auto;
+        padding: 25px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .login-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .login-container label {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .login-container input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .login-container button {
+        width: 100%;
+        padding: 10px;
+        background: #2ecc71;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .login-container button:hover {
+        background: #27ae60;
+    }
+
+    .login-container p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .login-container a {
+        color: #2ecc71;
+        text-decoration: none;
+    }
+</style>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account?
+        <a href="{{ url_for('register') }}">Register here</a>
+    </p>
+</div>
+{% endblock %}

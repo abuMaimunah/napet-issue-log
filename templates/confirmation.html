@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Issue Submitted{% endblock %}
+
+{% block content %}
+<h2>Issue Submitted Successfully!</h2>
+<p><strong>Title:</strong> {{ title }}</p>
+<p><strong>Description:</strong> {{ description }}</p>
+<p><strong>Priority:</strong> {{ priority }}</p>
+
+<p><strong>Status:</strong>
+    {% if status == "Resolved" %}
+        <span style="color: green; font-weight: bold;">Resolved</span>
+    {% else %}
+        <span style="color: red; font-weight: bold;">Pending</span>
+    {% endif %}
+</p>
+{% endblock %}
